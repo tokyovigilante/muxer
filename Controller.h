@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <mp4v2/mp4v2.h>
+#import "MP4Wrapper.h"
 
-@interface MuxController : NSObject {
+@interface Controller : NSObject {
 	
 
 	IBOutlet id SourceButton;
@@ -23,8 +23,10 @@
 	
 	NSArray *trackInfo;
 	
-    /* libmp4v2 handle */
-    MP4FileHandle file;
+	MP4Wrapper *output;
+	
+	
+    
 	
     /* Cumulated durations so far, in output & input timescale units (see MP4Mux) */
     int64_t sum_dur;        // duration in output timescale units
@@ -43,6 +45,9 @@
      */
     int samplerate;
 }
+
+-(id)init;
+-(void)applicationDidFinishLaunching: (NSNotification *) notification;
 
 
 -(IBAction)openSource:(id)sender;

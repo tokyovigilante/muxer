@@ -6,10 +6,23 @@
 //  Copyright 2008 Ryan Walklin. All rights reserved.
 //
 
-#import "MuxController.h"
+#import "Controller.h"
 
-@implementation MuxController
+@implementation Controller
 
+-(id)init
+{
+	if ((self = [super init]))
+	{
+		[NSApp setDelegate:self];
+	}
+	return self;
+}
+
+- (void) applicationDidFinishLaunching: (NSNotification *) notification
+{
+	[self openSource:window];
+}
 
 - (IBAction)openSource:(id)sender
 {

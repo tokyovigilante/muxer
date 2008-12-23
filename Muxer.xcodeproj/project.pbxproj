@@ -13,7 +13,10 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		945491160EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */; };
 		945491170EFC6F3D00BECAEB /* libmp4v2.0.0.0.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */; };
-		945491460EFC725E00BECAEB /* MuxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945491450EFC725E00BECAEB /* MuxController.m */; };
+		945491460EFC725E00BECAEB /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 945491450EFC725E00BECAEB /* Controller.m */; };
+		94B85CFA0F009ECE0014486D /* MP4Wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85CF90F009ECE0014486D /* MP4Wrapper.m */; };
+		94B85DCE0F00D5B00014486D /* TrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85DCD0F00D5B00014486D /* TrackWrapper.m */; };
+		94B85DDF0F00DB900014486D /* Muxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85DDE0F00DB900014486D /* Muxer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +31,14 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Muxer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muxer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmp4v2.0.0.0.dylib; path = mp4v2/libmp4v2.0.0.0.dylib; sourceTree = "<group>"; };
-		945491440EFC725E00BECAEB /* MuxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuxController.h; sourceTree = "<group>"; };
-		945491450EFC725E00BECAEB /* MuxController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = MuxController.m; sourceTree = "<group>"; };
+		945491440EFC725E00BECAEB /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		945491450EFC725E00BECAEB /* Controller.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Controller.m; sourceTree = "<group>"; };
+		94B85CF80F009ECE0014486D /* MP4Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MP4Wrapper.h; sourceTree = "<group>"; };
+		94B85CF90F009ECE0014486D /* MP4Wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MP4Wrapper.m; sourceTree = "<group>"; };
+		94B85DCC0F00D5B00014486D /* TrackWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackWrapper.h; sourceTree = "<group>"; };
+		94B85DCD0F00D5B00014486D /* TrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackWrapper.m; sourceTree = "<group>"; };
+		94B85DDD0F00DB900014486D /* Muxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Muxer.h; sourceTree = "<group>"; };
+		94B85DDE0F00DB900014486D /* Muxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Muxer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +57,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				945491440EFC725E00BECAEB /* MuxController.h */,
-				945491450EFC725E00BECAEB /* MuxController.m */,
+				945491440EFC725E00BECAEB /* Controller.h */,
+				945491450EFC725E00BECAEB /* Controller.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -84,7 +93,9 @@
 		29B97314FDCFA39411CA2CEA /* Muxer */ = {
 			isa = PBXGroup;
 			children = (
-				945491110EFC65D100BECAEB /* GUI */,
+				94B85CF40F009E9B0014486D /* Model */,
+				945491110EFC65D100BECAEB /* View */,
+				94B85DD70F00DB260014486D /* Controller */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -119,14 +130,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		945491110EFC65D100BECAEB /* GUI */ = {
+		945491110EFC65D100BECAEB /* View */ = {
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 			);
-			name = GUI;
+			name = View;
+			sourceTree = "<group>";
+		};
+		94B85CF40F009E9B0014486D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				94B85CF50F009EB50014486D /* Classes */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		94B85CF50F009EB50014486D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				94B85CF80F009ECE0014486D /* MP4Wrapper.h */,
+				94B85CF90F009ECE0014486D /* MP4Wrapper.m */,
+				94B85DCC0F00D5B00014486D /* TrackWrapper.h */,
+				94B85DCD0F00D5B00014486D /* TrackWrapper.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		94B85DD70F00DB260014486D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				94B85DDA0F00DB4E0014486D /* Classes */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		94B85DDA0F00DB4E0014486D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				94B85DDD0F00DB900014486D /* Muxer.h */,
+				94B85DDE0F00DB900014486D /* Muxer.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,7 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				945491460EFC725E00BECAEB /* MuxController.m in Sources */,
+				945491460EFC725E00BECAEB /* Controller.m in Sources */,
+				94B85CFA0F009ECE0014486D /* MP4Wrapper.m in Sources */,
+				94B85DCE0F00D5B00014486D /* TrackWrapper.m in Sources */,
+				94B85DDF0F00DB900014486D /* Muxer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
