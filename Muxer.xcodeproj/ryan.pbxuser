@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 709}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 45}";
+			sepNavWindowFrame = "{{15, 36}, {1085, 837}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 94548FFA0EFC4FD000BECAEB /* Muxer */;
+		activeTarget = 8D1107260486CEB800E47090 /* Muxer */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Muxer */,
+		);
+		breakpoints = (
+			94B85BA90EFF98670014486D /* MuxController.m:78 */,
+		);
+		codeSenseManager = 9454900E0EFC4FD800BECAEB /* Code sense */;
+		executables = (
+			94548FFA0EFC4FD000BECAEB /* Muxer */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					904,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					864,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 251696022;
+			PBXWorkspaceStateSaveDate = 251696022;
+		};
+		perUserProjectItems = {
+			945491650EFCAE7700BECAEB = 945491650EFCAE7700BECAEB /* PBXTextBookmark */;
+			945491660EFCAE7700BECAEB = 945491660EFCAE7700BECAEB /* PBXTextBookmark */;
+			94B85BAF0EFF98750014486D = 94B85BAF0EFF98750014486D /* PBXTextBookmark */;
+			94B85BB00EFF98750014486D = 94B85BB00EFF98750014486D /* PBXTextBookmark */;
+			94B85BB10EFF98750014486D = 94B85BB10EFF98750014486D /* PBXTextBookmark */;
+			94B85BB20EFF98750014486D = 94B85BB20EFF98750014486D /* PBXTextBookmark */;
+			94B85BB30EFF98750014486D = 94B85BB30EFF98750014486D /* PBXTextBookmark */;
+			94B85BB40EFF98750014486D = 94B85BB40EFF98750014486D /* PBXTextBookmark */;
+			94B85BB50EFF98750014486D = 94B85BB50EFF98750014486D /* PBXTextBookmark */;
+			94B85BB60EFF98750014486D = 94B85BB60EFF98750014486D /* PBXTextBookmark */;
+			94B85BF20EFF9C520014486D = 94B85BF20EFF9C520014486D /* PBXTextBookmark */;
+			94B85C570F0091070014486D = 94B85C570F0091070014486D /* PBXTextBookmark */;
+			94B85C5C0F0092FB0014486D = 94B85C5C0F0092FB0014486D /* PBXTextBookmark */;
+			94B85C5D0F0092FB0014486D = 94B85C5D0F0092FB0014486D /* PBXTextBookmark */;
+			94B85C5E0F0092FB0014486D = 94B85C5E0F0092FB0014486D /* PBXTextBookmark */;
+			94B85C5F0F0092FB0014486D = 94B85C5F0F0092FB0014486D /* PBXTextBookmark */;
+			94B85C600F0092FB0014486D = 94B85C600F0092FB0014486D /* PBXTextBookmark */;
+			94B85C610F0092FB0014486D = 94B85C610F0092FB0014486D /* PBXTextBookmark */;
+			94B85C650F0093910014486D = 94B85C650F0093910014486D /* PBXTextBookmark */;
+			94B85C660F0093910014486D = 94B85C660F0093910014486D /* PBXTextBookmark */;
+			94B85C680F0093910014486D = 94B85C680F0093910014486D /* PBXTextBookmark */;
+			94B85C710F0093980014486D /* PBXTextBookmark */ = 94B85C710F0093980014486D /* PBXTextBookmark */;
+			94B85C750F0093980014486D /* PBXTextBookmark */ = 94B85C750F0093980014486D /* PBXTextBookmark */;
+			94B85C760F0093980014486D /* PBXTextBookmark */ = 94B85C760F0093980014486D /* PBXTextBookmark */;
+		};
+		sourceControlManager = 9454900D0EFC4FD800BECAEB /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1107260486CEB800E47090 /* Muxer */ = {
+		activeExec = 0;
+		executables = (
+			94548FFA0EFC4FD000BECAEB /* Muxer */,
+		);
+	};
+	94548FFA0EFC4FD000BECAEB /* Muxer */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Muxer;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	9454900D0EFC4FD800BECAEB /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	9454900E0EFC4FD800BECAEB /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	945491440EFC725E00BECAEB /* MuxController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 915}}";
+			sepNavSelRange = "{1184, 0}";
+			sepNavVisRange = "{481, 915}";
+		};
+	};
+	945491450EFC725E00BECAEB /* MuxController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 11655}}";
+			sepNavSelRange = "{1286, 0}";
+			sepNavVisRange = "{697, 764}";
+			sepNavWindowFrame = "{{15, 36}, {1085, 837}}";
+		};
+	};
+	945491650EFCAE7700BECAEB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "Controller.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 207;
+		vrLoc = 0;
+	};
+	945491660EFCAE7700BECAEB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "Controller.m: 6";
+		rLen = 0;
+		rLoc = 108;
+		rType = 0;
+		vrLen = 190;
+		vrLoc = 0;
+	};
+	94B85BA90EFF98670014486D /* MuxController.m:78 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 945491450EFC725E00BECAEB /* MuxController.m */;
+		functionName = "-extractTrack:withTrackId:toDestinationFile:";
+		hitCount = 2;
+		ignoreCount = 0;
+		lineNumber = 78;
+		location = Muxer;
+		modificationTime = 251634208.221966;
+		state = 1;
+	};
+	94B85BAF0EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 73";
+		rLen = 0;
+		rLoc = 3740;
+		rType = 0;
+		vrLen = 612;
+		vrLoc = 1388;
+	};
+	94B85BB00EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 49";
+		rLen = 33;
+		rLoc = 1084;
+		rType = 0;
+		vrLen = 793;
+		vrLoc = 481;
+	};
+	94B85BB10EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 35";
+		rLen = 0;
+		rLoc = 698;
+		rType = 0;
+		vrLen = 791;
+		vrLoc = 466;
+	};
+	94B85BB20EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 49";
+		rLen = 33;
+		rLoc = 1084;
+		rType = 0;
+		vrLen = 795;
+		vrLoc = 479;
+	};
+	94B85BB30EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 73";
+		rLen = 126;
+		rLoc = 1716;
+		rType = 0;
+		vrLen = 834;
+		vrLoc = 1401;
+	};
+	94B85BB40EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 57";
+		rLen = 0;
+		rLoc = 1277;
+		rType = 0;
+		vrLen = 745;
+		vrLoc = 703;
+	};
+	94B85BB50EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 74";
+		rLen = 126;
+		rLoc = 1716;
+		rType = 0;
+		vrLen = 893;
+		vrLoc = 1524;
+	};
+	94B85BB60EFF98750014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 53";
+		rLen = 0;
+		rLoc = 1208;
+		rType = 0;
+		vrLen = 756;
+		vrLoc = 632;
+	};
+	94B85BC60EFF98750014486D /* general.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = general.h;
+		path = /Volumes/Home/ryan/Develop/Muxer/mp4v2/general.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 7380}}";
+			sepNavSelRange = "{303, 13}";
+			sepNavVisRange = "{0, 1713}";
+		};
+	};
+	94B85BD20EFF99870014486D /* file.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = file.h;
+		path = /Volumes/Home/ryan/Develop/Muxer/mp4v2/file.h;
+		sourceTree = "<absolute>";
+	};
+	94B85BF20EFF9C520014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 94B85BD20EFF99870014486D /* file.h */;
+		rLen = 1;
+		rLoc = 213;
+		rType = 1;
+	};
+	94B85C570F0091070014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 94B85BC60EFF98750014486D /* general.h */;
+		rLen = 1;
+		rLoc = 11;
+		rType = 1;
+	};
+	94B85C5C0F0092FB0014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 53";
+		rLen = 0;
+		rLoc = 1184;
+		rType = 0;
+		vrLen = 915;
+		vrLoc = 481;
+	};
+	94B85C5D0F0092FB0014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "warning: 'MuxController' may not respond to '-extractTrack:withTrackId:toDestinationFile:'";
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		rLen = 1;
+		rLoc = 52;
+		rType = 1;
+	};
+	94B85C5E0F0092FB0014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 744";
+		rLen = 5;
+		rLoc = 22541;
+		rType = 0;
+		vrLen = 1013;
+		vrLoc = 21511;
+	};
+	94B85C5F0F0092FB0014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 53";
+		rLen = 0;
+		rLoc = 1184;
+		rType = 0;
+		vrLen = 830;
+		vrLoc = 566;
+	};
+	94B85C600F0092FB0014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 744";
+		rLen = 5;
+		rLoc = 22541;
+		rType = 0;
+		vrLen = 968;
+		vrLoc = 21556;
+	};
+	94B85C610F0092FB0014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491440EFC725E00BECAEB /* MuxController.h */;
+		name = "MuxController.h: 53";
+		rLen = 0;
+		rLoc = 1184;
+		rType = 0;
+		vrLen = 915;
+		vrLoc = 481;
+	};
+	94B85C650F0093910014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 57";
+		rLen = 0;
+		rLoc = 1286;
+		rType = 0;
+		vrLen = 627;
+		vrLoc = 795;
+	};
+	94B85C660F0093910014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 94B85C670F0093910014486D /* file.h */;
+		name = "file.h: 214";
+		rLen = 19;
+		rLoc = 8272;
+		rType = 0;
+		vrLen = 1895;
+		vrLoc = 7381;
+	};
+	94B85C670F0093910014486D /* file.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = file.h;
+		path = /Volumes/Home/ryan/Develop/Muxer/mp4v2/file.h;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 5475}}";
+			sepNavSelRange = "{8272, 19}";
+			sepNavVisRange = "{7381, 1895}";
+		};
+	};
+	94B85C680F0093910014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 94B85C690F0093910014486D /* general.h */;
+		name = "general.h: 12";
+		rLen = 13;
+		rLoc = 303;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 0;
+	};
+	94B85C690F0093910014486D /* general.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = general.h;
+		path = /Volumes/Home/ryan/Develop/Muxer/mp4v2/general.h;
+		sourceTree = "<absolute>";
+	};
+	94B85C710F0093980014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 945491450EFC725E00BECAEB /* MuxController.m */;
+		name = "MuxController.m: 57";
+		rLen = 0;
+		rLoc = 1286;
+		rType = 0;
+		vrLen = 764;
+		vrLoc = 697;
+	};
+	94B85C750F0093980014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 94B85C670F0093910014486D /* file.h */;
+		name = "file.h: 214";
+		rLen = 19;
+		rLoc = 8272;
+		rType = 0;
+		vrLen = 1895;
+		vrLoc = 7381;
+	};
+	94B85C760F0093980014486D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 94B85BC60EFF98750014486D /* general.h */;
+		name = "general.h: 12";
+		rLen = 13;
+		rLoc = 303;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 0;
+	};
+}

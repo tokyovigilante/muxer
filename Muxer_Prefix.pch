@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Muxer' target in the 'Muxer' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
