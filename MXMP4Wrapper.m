@@ -6,12 +6,12 @@
 //  Copyright 2008 Ryan Walklin. All rights reserved.
 //
 
-#import "MP4Wrapper.h"
+#import "MXMP4Wrapper.h"
+#import "config.h"
 
+@implementation MXMP4Wrapper
 
-@implementation MP4Wrapper
-
-- (id)initWithExistingMP4File:(NSString *)mp4File
+-(id)initWithExistingMP4File:(NSString *)mp4File
 {
     if ((self = [super init]))
 	{
@@ -23,7 +23,7 @@
 	return self;
 }
 
-- (id)initWithNewMP4File:(NSString *)mp4File
+-(id)initWithNewMP4File:(NSString *)mp4File
 {
 	if ((self = [super init]))
 	{

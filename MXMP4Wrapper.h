@@ -11,12 +11,7 @@
 
 #import <mp4v2/mp4v2.h>
 
-#define MP4_INPUT 0
-#define MP4_OUTPUT 1
-
-#define MP4_VERBOSITY 0x600
-
-@interface MP4Wrapper : NSObject {
+@interface MXMP4Wrapper : NSObject {
 	
 	/* libmp4v2 handle */
     MP4FileHandle fileHandle;

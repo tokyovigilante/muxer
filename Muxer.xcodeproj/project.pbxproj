@@ -14,8 +14,11 @@
 		945491160EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */; };
 		945491170EFC6F3D00BECAEB /* libmp4v2.0.0.0.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */; };
 		945491460EFC725E00BECAEB /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 945491450EFC725E00BECAEB /* Controller.m */; };
-		94B85CFA0F009ECE0014486D /* MP4Wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85CF90F009ECE0014486D /* MP4Wrapper.m */; };
-		94B85DCE0F00D5B00014486D /* TrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85DCD0F00D5B00014486D /* TrackWrapper.m */; };
+		9496767C0F038CFC00637F2E /* MXAudioTrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9496767B0F038CFC00637F2E /* MXAudioTrackWrapper.m */; };
+		949676810F038D0700637F2E /* MXVideoTrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 949676800F038D0700637F2E /* MXVideoTrackWrapper.m */; };
+		949676BA0F038D9900637F2E /* MXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 949676B90F038D9900637F2E /* MXWindow.m */; };
+		94B85CFA0F009ECE0014486D /* MXMP4Wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85CF90F009ECE0014486D /* MXMP4Wrapper.m */; };
+		94B85DCE0F00D5B00014486D /* MXTrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85DCD0F00D5B00014486D /* MXTrackWrapper.m */; };
 		94B85DDF0F00DB900014486D /* Muxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B85DDE0F00DB900014486D /* Muxer.m */; };
 /* End PBXBuildFile section */
 
@@ -33,10 +36,17 @@
 		945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmp4v2.0.0.0.dylib; path = mp4v2/libmp4v2.0.0.0.dylib; sourceTree = "<group>"; };
 		945491440EFC725E00BECAEB /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		945491450EFC725E00BECAEB /* Controller.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Controller.m; sourceTree = "<group>"; };
-		94B85CF80F009ECE0014486D /* MP4Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MP4Wrapper.h; sourceTree = "<group>"; };
-		94B85CF90F009ECE0014486D /* MP4Wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MP4Wrapper.m; sourceTree = "<group>"; };
-		94B85DCC0F00D5B00014486D /* TrackWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackWrapper.h; sourceTree = "<group>"; };
-		94B85DCD0F00D5B00014486D /* TrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackWrapper.m; sourceTree = "<group>"; };
+		949673AA0F0334CD00637F2E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		9496767A0F038CFC00637F2E /* MXAudioTrackWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXAudioTrackWrapper.h; sourceTree = "<group>"; };
+		9496767B0F038CFC00637F2E /* MXAudioTrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXAudioTrackWrapper.m; sourceTree = "<group>"; };
+		9496767F0F038D0700637F2E /* MXVideoTrackWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXVideoTrackWrapper.h; sourceTree = "<group>"; };
+		949676800F038D0700637F2E /* MXVideoTrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXVideoTrackWrapper.m; sourceTree = "<group>"; };
+		949676B80F038D9900637F2E /* MXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXWindow.h; sourceTree = "<group>"; };
+		949676B90F038D9900637F2E /* MXWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXWindow.m; sourceTree = "<group>"; };
+		94B85CF80F009ECE0014486D /* MXMP4Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXMP4Wrapper.h; sourceTree = "<group>"; };
+		94B85CF90F009ECE0014486D /* MXMP4Wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXMP4Wrapper.m; sourceTree = "<group>"; };
+		94B85DCC0F00D5B00014486D /* MXTrackWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXTrackWrapper.h; sourceTree = "<group>"; };
+		94B85DCD0F00D5B00014486D /* MXTrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXTrackWrapper.m; sourceTree = "<group>"; };
 		94B85DDD0F00DB900014486D /* Muxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Muxer.h; sourceTree = "<group>"; };
 		94B85DDE0F00DB900014486D /* Muxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Muxer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +69,7 @@
 			children = (
 				945491440EFC725E00BECAEB /* Controller.h */,
 				945491450EFC725E00BECAEB /* Controller.m */,
+				949676910F038D5200637F2E /* Custom Controls */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -140,6 +151,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		949676910F038D5200637F2E /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				949676B80F038D9900637F2E /* MXWindow.h */,
+				949676B90F038D9900637F2E /* MXWindow.m */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
 		94B85CF40F009E9B0014486D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,10 +171,15 @@
 		94B85CF50F009EB50014486D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				94B85CF80F009ECE0014486D /* MP4Wrapper.h */,
-				94B85CF90F009ECE0014486D /* MP4Wrapper.m */,
-				94B85DCC0F00D5B00014486D /* TrackWrapper.h */,
-				94B85DCD0F00D5B00014486D /* TrackWrapper.m */,
+				949673AA0F0334CD00637F2E /* config.h */,
+				94B85CF80F009ECE0014486D /* MXMP4Wrapper.h */,
+				94B85CF90F009ECE0014486D /* MXMP4Wrapper.m */,
+				94B85DCC0F00D5B00014486D /* MXTrackWrapper.h */,
+				94B85DCD0F00D5B00014486D /* MXTrackWrapper.m */,
+				9496767A0F038CFC00637F2E /* MXAudioTrackWrapper.h */,
+				9496767B0F038CFC00637F2E /* MXAudioTrackWrapper.m */,
+				9496767F0F038D0700637F2E /* MXVideoTrackWrapper.h */,
+				949676800F038D0700637F2E /* MXVideoTrackWrapper.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -234,9 +259,12 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				945491460EFC725E00BECAEB /* Controller.m in Sources */,
-				94B85CFA0F009ECE0014486D /* MP4Wrapper.m in Sources */,
-				94B85DCE0F00D5B00014486D /* TrackWrapper.m in Sources */,
+				94B85CFA0F009ECE0014486D /* MXMP4Wrapper.m in Sources */,
+				94B85DCE0F00D5B00014486D /* MXTrackWrapper.m in Sources */,
 				94B85DDF0F00DB900014486D /* Muxer.m in Sources */,
+				9496767C0F038CFC00637F2E /* MXAudioTrackWrapper.m in Sources */,
+				949676810F038D0700637F2E /* MXVideoTrackWrapper.m in Sources */,
+				949676BA0F038D9900637F2E /* MXWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +299,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = Muxer_Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"";
 				INFOPLIST_FILE = Info.plist;
@@ -280,6 +308,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_NAME = Muxer;
 			};
 			name = Debug;
@@ -290,7 +319,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = Muxer_Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"";
 				INFOPLIST_FILE = Info.plist;
@@ -299,6 +328,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_NAME = Muxer;
 			};
 			name = Release;
@@ -308,12 +338,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
+				SHARED_PRECOMPS_DIR = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
 			};
 			name = Debug;
 		};
@@ -321,11 +353,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DEAD_CODE_STRIPPING = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
+				SHARED_PRECOMPS_DIR = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
 			};
 			name = Release;
 		};

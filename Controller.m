@@ -15,6 +15,7 @@
 	if ((self = [super init]))
 	{
 		[NSApp setDelegate:self];
+		muxer = [[Muxer alloc] init];
 	}
 	return self;
 }
@@ -28,7 +29,7 @@
 {
 	NSOpenPanel * oPanel = [NSOpenPanel openPanel];
 	
-	NSArray *fileTypes = [NSArray arrayWithObject:@"mp4"];
+	NSArray *fileTypes = [NSArray arrayWithObjects:@"mp4", @"mov", Nil];
 	
 	[oPanel setCanChooseFiles:TRUE];
 	[oPanel setCanChooseDirectories:FALSE];
@@ -45,90 +46,13 @@
 
 -(IBAction)muxTarget:(id)sender
 {
-	NSInteger selectedTrack = [TargetView selectedRow];
-	MP4FileHandle mp4File = MP4Read("", 0x600);
-	MP4SampleId sampleId = MP4_INVALID_SAMPLE_ID;
-
-	
-	if ( !mp4File )
-	{
-		return;
-	}
-	
-    if ( selectedTrack == -1 )
-	{
-#warning use track type/subtype
-        uint32_t numTracks = MP4GetNumberOfTracks( mp4File, NULL, 0);
-		
-        for ( uint32_t i = 0; i < numTracks; i++ ) 
-		{
-            selectedTrack = MP4FindTrackId( mp4File, i, NULL, 0);
-			[self extractTrackFromFile:mp4File withTrackId:selectedTrack toDestinationFile:NULL];       
-		}
-    }
-    else {
-		[self extractTrackFromFile:mp4File withTrackId:selectedTrack toDestinationFile:NULL];
-    }
-	
-    MP4Close( mp4File );
-	
-
+	[muxer muxTarget];
 }
 
 -(void)scanSource:(NSString *)source
 {
-	if (trackInfo) [trackInfo release];
-	char* info = MP4FileInfo([source cStringUsingEncoding:NSASCIIStringEncoding], MP4_INVALID_TRACK_ID);
-	trackInfo = [[[NSString stringWithCString:info encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"] retain];
+	[muxer scanSource:source];
 	[TargetView reloadData];
-}
-
--(void)extractTrackFromFile:(MP4FileHandle)mp4File 
-			withTrackId:(MP4TrackId)trackId 
-		toDestinationFile:(char*)dstFileName
-{
-	// TODO-KB: test io::StdioFile
-    char *outMode = "w";
-    char outName[1024];
-    char *Mp4FileName = "";
-
-	if( !dstFileName )
-		snprintf( outName, sizeof( outName ), "%s.t%u", Mp4FileName, trackId );
-	else
-		snprintf( outName, sizeof( outName ), "%s", dstFileName );
-		
-	FILE *outputHandle = fopen(outName, outMode);
-	if (!outputHandle)
-	{
-		fprintf( stderr, "can't open %s (%s)\n", outName, strerror(errno));
-		return;
-	}
-    	
-    MP4SampleId numSamples = MP4GetTrackNumberOfSamples( mp4File, trackId );
-	
-    for (MP4SampleId sampleId = 1; sampleId <= numSamples; sampleId++ ) 
-	{
-        // signals to ReadSample() that it should malloc a buffer for us
-        uint8_t* pSample = NULL;
-        uint32_t sampleSize = 0;
-		
-        if (!MP4ReadSample(mp4File, trackId, sampleId, &pSample, &sampleSize, NULL, NULL, NULL, NULL))
-		{
-            fprintf( stderr, "Read sample %u for %s failed\n", sampleId, outName );
-            break;
-        }
-		if (!fwrite(pSample, sampleSize, 1, outputHandle))
-		{
-            fprintf( stderr, "Write to %s failed (%s)\n", outName, strerror(errno));
-            break;
-        }
-		
-		free( pSample );
-	}
-		
-		
-	fclose(outputHandle);
-	
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(NSString *)contextInfo
@@ -145,25 +69,39 @@
 
 - (int)numberOfRowsInTableView:(NSTableView *)aTable
 {
-	if (aTable == TargetView && trackInfo)
+	if (aTable == TargetView && muxer)
 	{
-		return [trackInfo count];
+		return [muxer sourceTrackCount];
 	}
 	return 0;
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
 {
-	if (aTableView == TargetView && trackInfo)
+	id rowObject;
+	if (aTableView == TargetView && muxer)
 	{
-		NSParameterAssert(rowIndex >= 0 && (unsigned)rowIndex < [trackInfo count]);
-		return [trackInfo objectAtIndex:rowIndex];
+		NSParameterAssert(rowIndex >= 0 && (unsigned)rowIndex < [muxer sourceTrackCount]);
+		rowObject = [muxer trackWithIndex:rowIndex];
+		if ([rowObject isKindOfClass:[NSNumber class]])
+		{
+			return [rowObject stringValue];
+		}
+		if ([rowObject isKindOfClass:[MXTrackWrapper class]])
+		{
+			return [[rowObject trackDescription] objectForKey:@"generic_track"];
+		}
 	}
 	return NULL;
 }
 
+-(BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
+{
+    return [muxer isTrackGroupRow:row];
+}
 
 
+#pragma mark -
 #pragma mark mp4v2 Interface
 
 #if 0

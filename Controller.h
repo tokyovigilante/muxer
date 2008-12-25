@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "MP4Wrapper.h"
+#import "MXMP4Wrapper.h"
+#import "Muxer.h"
 
 @interface Controller : NSObject {
 	
@@ -21,9 +22,8 @@
 	IBOutlet id toolbar;
 	IBOutlet id window;
 	
-	NSArray *trackInfo;
-	
-	MP4Wrapper *output;
+	MXMP4Wrapper *output;
+	Muxer *muxer;
 	
 	
     
@@ -48,6 +48,7 @@
 
 -(id)init;
 -(void)applicationDidFinishLaunching: (NSNotification *) notification;
+-(BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row;
 
 
 -(IBAction)openSource:(id)sender;
