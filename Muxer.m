@@ -8,8 +8,10 @@
 
 #import "Muxer.h"
 
-#import "MXTrackWrapper.h"
 #import "MXMP4Wrapper.h"
+#import "MXVideoTrackWrapper.h"
+#import "MXAudioTrackWrapper.h"
+
 
 @implementation Muxer
 
@@ -17,7 +19,8 @@
 {
 	if ((self = [super init]))
 	{
-		sourceTrackArray = [NSMutableArray array]; 
+		videoTrackArray = [NSMutableArray arrayWithObject:@"Video"]; 
+		audioTrackArray = [NSMutableArray arrayWithObject:@"Audio"];
 	}
 	return self;
 }
@@ -27,15 +30,35 @@
 	MP4FileHandle *sourceHandle = MP4Read([source UTF8String], MP4_VERBOSITY);
 	if (sourceHandle == MP4_INVALID_FILE_HANDLE) return -1;
 	
-	NSInteger selectedTrack, numTracks = MP4GetNumberOfTracks(sourceHandle, NULL, 0);
-	[sourceTrackArray addObject:[NSNumber numberWithInt:numTracks]];
+	NSInteger numTracks = MP4GetNumberOfTracks(sourceHandle, NULL, 0);
 	for (NSInteger i=0; i < numTracks; i++)
 	{
-		selectedTrack = MP4FindTrackId(sourceHandle, i, NULL, 0);
-		MXTrackWrapper *track = [[MXTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack];
-		[sourceTrackArray addObject:track];
+		NSInteger selectedTrack = MP4FindTrackId(sourceHandle, i, NULL, 0);
+		
+		const char *trackType = MP4GetTrackType(sourceHandle, selectedTrack);
+		
+		if (trackType)
+		{
+			if (strcmp(trackType, MP4_VIDEO_TRACK_TYPE) == 0)
+			{
+				[videoTrackArray addObject:[[MXVideoTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack]];
+			}
+			else if (strcmp(trackType, MP4_AUDIO_TRACK_TYPE) == 0)
+			{
+				[audioTrackArray addObject:[[MXAudioTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack]];
+			}
+			else if (strcmp(trackType, MP4_TEXT_TRACK_TYPE) == 0	)
+			{
+				// placeholder
+			}
+			else
+			{
+				NSLog(@"Ignoring unsupported track (type %s)", trackType);
+				continue;
+				
+			}
+		}
 	}	
-	//[sourceTrackArray sortUsingFunction:<#(NSInteger *)#> context:<#id #>:<#(NSInteger *)#> context:<#id #>
 	MP4Close(sourceHandle);
 	return numTracks;
 }
@@ -57,7 +80,6 @@
 	
     //if ( selectedTrack == -1 )
 	{
-#warning use track type/subtype
        // uint32_t numTracks = MP4GetNumberOfTracks( mp4File, NULL, 0);
 		
         //for ( uint32_t i = 0; i < numTracks; i++ ) 
@@ -124,22 +146,29 @@
 
 -(NSInteger)sourceTrackCount
 {
-	return [sourceTrackArray count];
+	return [videoTrackArray count] + [audioTrackArray count];
 }
 
 -(MXTrackWrapper *)trackWithIndex:(NSInteger)index
 {
-	return [sourceTrackArray objectAtIndex:index];
-}
-
--(NSMutableArray *)sourceTracks
-{
-	return sourceTrackArray;
+	NSInteger offset = index;
+	if (offset < [videoTrackArray count])
+	{
+		return [videoTrackArray objectAtIndex:offset];
+	} 
+	offset -= [videoTrackArray count];
+	return [audioTrackArray objectAtIndex:offset];
 }
 
 -(BOOL)isTrackGroupRow:(NSInteger)row
 {
-	return [[sourceTrackArray objectAtIndex:row] isKindOfClass:[NSNumber class]];
+	NSInteger offset = row;
+	if (offset < [videoTrackArray count])
+	{
+		return [[videoTrackArray objectAtIndex:offset] isKindOfClass:[NSString class]];
+	}
+	offset -= [videoTrackArray count];
+	return [[audioTrackArray objectAtIndex:offset] isKindOfClass:[NSString class]];
 }
 
 @end

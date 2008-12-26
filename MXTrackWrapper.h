@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "config.h"
+#import <mp4v2/mp4v2.h>
 
 @interface MXTrackWrapper : NSObject 
 {

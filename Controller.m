@@ -83,9 +83,9 @@
 	{
 		NSParameterAssert(rowIndex >= 0 && (unsigned)rowIndex < [muxer sourceTrackCount]);
 		rowObject = [muxer trackWithIndex:rowIndex];
-		if ([rowObject isKindOfClass:[NSNumber class]])
+		if ([rowObject isKindOfClass:[NSString class]])
 		{
-			return [rowObject stringValue];
+			return rowObject;
 		}
 		if ([rowObject isKindOfClass:[MXTrackWrapper class]])
 		{
@@ -98,6 +98,11 @@
 -(BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
 {
     return [muxer isTrackGroupRow:row];
+}
+
+- (BOOL) tableView: (NSTableView *) tableView shouldSelectRow: (NSInteger) row
+{
+    return ![muxer isTrackGroupRow:row];
 }
 
 

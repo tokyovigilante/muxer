@@ -8,9 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "MXTrackWrapper.h"
 
-@interface MXAudioTrackWrapper : NSObject {
+@interface MXAudioTrackWrapper : MXTrackWrapper {
 
 }
+
+-(void)readTrackData;
+
 
 @end

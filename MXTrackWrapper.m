@@ -8,9 +8,6 @@
 
 #import "MXTrackWrapper.h"
 
-#import <mp4v2/mp4v2.h>
-
-
 @implementation MXTrackWrapper
 @synthesize trackSourcePath;
 @synthesize trackSourceID;
@@ -43,10 +40,11 @@
 	}
 	
 }
--(void)dealloc
+
+-(void)finalize
 {
 	free(trackType);
-	[super dealloc];
+	[super finalize];
 }
 
 @end

@@ -16,7 +16,8 @@
 @interface Muxer : NSObject {
 	
 	MP4FileHandle *		targetMP4;
-	NSMutableArray *	sourceTrackArray;
+	NSMutableArray *	videoTrackArray;
+	NSMutableArray *	audioTrackArray;
 
 }
 
