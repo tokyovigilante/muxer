@@ -25,6 +25,9 @@
 	[self openSource:window];
 }
 
+#pragma mark -
+#pragma mark Source handling
+
 - (IBAction)openSource:(id)sender
 {
 	NSOpenPanel * oPanel = [NSOpenPanel openPanel];
@@ -44,16 +47,29 @@
 	
 }
 
--(IBAction)muxTarget:(id)sender
-{
-	[muxer muxTarget];
-}
-
 -(void)scanSource:(NSString *)source
 {
 	[muxer scanSource:source];
 	[TargetView reloadData];
 }
+
+-(IBAction)removeTrack:(id)sender
+{
+	[muxer removeTrackAtIndex:[TargetView selectedRow]];
+	[TargetView reloadData];
+	[TargetView deselectAll:self];
+}
+
+#pragma mark -
+#pragma mark Muxer interface
+
+-(IBAction)muxTarget:(id)sender
+{
+	[muxer muxTarget];
+}
+
+#pragma mark -
+#pragma mark Delegates
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(NSString *)contextInfo
 {

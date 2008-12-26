@@ -337,12 +337,11 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>949221AE0F059A73007313BD</string>
+										<string>949221E70F059D84007313BD</string>
 										<key>history</key>
 										<array>
 											<string>949673C30F0335BE00637F2E</string>
 											<string>949674870F0350C100637F2E</string>
-											<string>949675A20F0360B100637F2E</string>
 											<string>949676CF0F0393D600637F2E</string>
 											<string>949676D10F0393D600637F2E</string>
 											<string>949677460F048A4000637F2E</string>
@@ -352,8 +351,10 @@
 											<string>949220190F04D445007313BD</string>
 											<string>9492207E0F04D7D3007313BD</string>
 											<string>9492209E0F04DC85007313BD</string>
-											<string>949221AC0F059A73007313BD</string>
-											<string>949220E30F05938E007313BD</string>
+											<string>949221BD0F059C85007313BD</string>
+											<string>949221BE0F059C85007313BD</string>
+											<string>949221E40F059D84007313BD</string>
+											<string>949221E50F059D84007313BD</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -384,6 +385,15 @@
 											<string>949220800F04D7D3007313BD</string>
 											<string>9492210E0F059909007313BD</string>
 											<string>949221AD0F059A73007313BD</string>
+											<string>949221C10F059C85007313BD</string>
+											<string>949221C20F059C85007313BD</string>
+											<string>949221C30F059C85007313BD</string>
+											<string>949221C40F059C85007313BD</string>
+											<string>949221C50F059C85007313BD</string>
+											<string>949221C60F059C85007313BD</string>
+											<string>949221C70F059C85007313BD</string>
+											<string>949221C80F059C85007313BD</string>
+											<string>949221E60F059D84007313BD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -692,7 +702,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>949221AF0F059A73007313BD</string>
+		<string>949221E80F059D84007313BD</string>
 		<string>94921FCD0F0490A0007313BD</string>
 		<string>94921FCE0F0490A0007313BD</string>
 		<string>/Volumes/Home/ryan/Develop/muxer/Muxer.xcodeproj</string>

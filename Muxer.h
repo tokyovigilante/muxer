@@ -28,6 +28,8 @@
 -(NSInteger)sourceTrackCount;
 -(MXTrackWrapper *)trackWithIndex:(NSInteger)index;
 -(BOOL)isTrackGroupRow:(NSInteger)row;
+-(void)removeTrackAtIndex:(NSInteger)index;
+
 
 //-(NSMutableArray *)sourceTrackArray;
 

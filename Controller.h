@@ -53,6 +53,7 @@
 
 -(IBAction)openSource:(id)sender;
 -(IBAction)muxTarget:(id)sender;
+-(IBAction)removeTrack:(id)sender;
 
 -(void)scanSource:(NSString *)source;
 

@@ -171,4 +171,17 @@
 	return [[audioTrackArray objectAtIndex:offset] isKindOfClass:[NSString class]];
 }
 
+-(void)removeTrackAtIndex:(NSInteger)index
+{
+	NSInteger offset = index;
+	if (offset < [videoTrackArray count])
+	{
+		[videoTrackArray removeObjectAtIndex:offset];
+		return;
+	}
+	offset -= [videoTrackArray count];
+	[audioTrackArray removeObjectAtIndex:offset];
+	return;
+}
+
 @end
