@@ -65,7 +65,21 @@
 
 -(IBAction)muxTarget:(id)sender
 {
-	[muxer muxTarget];
+	NSSavePanel * sPanel = [NSSavePanel savePanel];
+	
+	NSArray *fileTypes = [NSArray arrayWithObject:@"mp4"];
+	
+	[sPanel setCanCreateDirectories:TRUE];
+	[sPanel setAllowedFileTypes:fileTypes];
+	[sPanel setAllowsOtherFileTypes:FALSE];
+	
+	[sPanel beginSheetForDirectory:NSHomeDirectory()
+							  file:nil
+					modalForWindow:window
+					 modalDelegate:self
+					didEndSelector:@selector(savePanelDidEnd:returnCode:contextInfo:)
+					   contextInfo:NULL];
+	
 }
 
 #pragma mark -
@@ -77,6 +91,15 @@
 	{
 		[panel close];
 		[self scanSource:[[panel filenames] objectAtIndex:0]];
+	}
+}
+
+- (void)savePanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(NSString *)contextInfo
+{
+	if (returnCode == NSOKButton)
+	{
+		[panel close];
+		[muxer muxTargetToFile:[[panel filenames] objectAtIndex:0]];
 	}
 }
 

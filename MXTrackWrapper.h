@@ -15,14 +15,26 @@
 {
 	NSString * trackSourcePath;
 	NSInteger trackSourceID;
+	NSInteger trackTargetID;
 	char * trackType;
 	NSMutableDictionary * trackDescription;
+	
+	NSInteger samplerate; 
+	double bitrate; // kbit/sec
+	double duration; // seconds
+	
 }
-@property (readwrite, retain) NSString * trackSourcePath;
-@property (readwrite) NSInteger trackSourceID;
-@property (readwrite, retain) NSMutableDictionary * trackDescription;
+@property (readonly, copy) NSString * trackSourcePath;
+@property (readonly) NSInteger trackSourceID;
+@property (readwrite) NSInteger trackTargetID;
+@property (readonly, copy) NSMutableDictionary * trackDescription;
+
+@property (readonly) NSInteger samplerate;
+@property (readonly) double bitrate;
+@property (readonly) double duration;
 
 -(id)initWithSourcePath:(NSString *)source trackID:(NSInteger)trackID;
--(void)readTrackData;
+-(void)readTrackType;
+-(void)readTrackDescription;
 
 @end

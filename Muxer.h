@@ -18,17 +18,23 @@
 	MP4FileHandle *		targetMP4;
 	NSMutableArray *	videoTrackArray;
 	NSMutableArray *	audioTrackArray;
+	
+	NSInteger timescale;
+	uint64_t outputSize; 
+	BOOL use64BitMode;
 
 }
 
 -(id)init;
 -(NSInteger)scanSource:(NSString *)source;
--(void)muxTarget;
+-(BOOL)muxTargetToFile:(NSString *)outputFile;
 
 -(NSInteger)sourceTrackCount;
 -(MXTrackWrapper *)trackWithIndex:(NSInteger)index;
 -(BOOL)isTrackGroupRow:(NSInteger)row;
 -(void)removeTrackAtIndex:(NSInteger)index;
+-(uint64_t)calculateOutputSize;
+
 
 
 //-(NSMutableArray *)sourceTrackArray;
