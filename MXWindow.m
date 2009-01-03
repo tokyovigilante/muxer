@@ -21,7 +21,8 @@
 	
 	if (self) 
 	{
-		[self setContentBorderThickness:30.0 forEdge:NSMinYEdge];
+		[self setContentBorderThickness:40.0 forEdge:NSMinYEdge];
+		[self setContentMinSize:[[self contentView] frame].size];
 	}
 	
 	return self;

@@ -18,6 +18,7 @@
 	IBOutlet id RemoveStreamButton;
 	IBOutlet id MuxButton;
 	IBOutlet id TargetView;
+	IBOutlet id StatusLabel;
 	IBOutlet id MuxProgress;
 	IBOutlet id toolbar;
 	IBOutlet id window;
@@ -53,12 +54,12 @@
 
 -(IBAction)openSource:(id)sender;
 -(IBAction)muxTarget:(id)sender;
+-(void)muxTargetToFile:(NSString *)outputFile;
 -(IBAction)removeTrack:(id)sender;
 
 -(void)scanSource:(NSString *)source;
 
--(void)extractTrackFromFile:(MP4FileHandle)mp4File withTrackId:(MP4TrackId)trackId toDestinationFile:(char*)dstFileName;
-
+-(void)updateInterface:(NSDictionary *)status;
 
 -(void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(NSString *)contextInfo;
 -(void)savePanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(NSString *)contextInfo;

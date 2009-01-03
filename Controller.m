@@ -22,6 +22,12 @@
 
 - (void) applicationDidFinishLaunching: (NSNotification *) notification
 {
+	// register for status notifications
+	[[NSNotificationCenter defaultCenter] addObserver: self
+											 selector: @selector(updateStatusFromMuxer:)
+												 name: @"status" 
+											   object: nil];
+	
 	[self openSource:window];
 }
 
@@ -36,6 +42,8 @@
 	
 	[oPanel setCanChooseFiles:TRUE];
 	[oPanel setCanChooseDirectories:FALSE];
+	[oPanel setAllowsMultipleSelection:TRUE];
+	[oPanel setMessage:@"Import Tracks From:"];
 	
 	[oPanel beginSheetForDirectory:NSHomeDirectory()
 							  file:nil
@@ -61,6 +69,32 @@
 }
 
 #pragma mark -
+#pragma mark Interface
+
+- (void)updateStatusFromMuxer:(NSNotification *)notification
+{
+	[self performSelectorOnMainThread:@selector(updateInterface:)
+						   withObject:[notification userInfo]
+						waitUntilDone:FALSE];
+}
+
+-(void)updateInterface:(NSDictionary *)status
+{
+	[StatusLabel setStringValue:[status objectForKey:@"status"]];
+	[MuxProgress setDoubleValue:[[status objectForKey:@"progress"] doubleValue]];
+	[MuxProgress setIndeterminate:[[status objectForKey:@"indeterminate"] boolValue]];
+	if ([[status objectForKey:@"indeterminate"] boolValue])
+	{
+		[MuxProgress startAnimation];
+	}
+	else
+	{
+		[MuxProgress stopAnimation];
+	}
+}
+
+
+#pragma mark -
 #pragma mark Muxer interface
 
 -(IBAction)muxTarget:(id)sender
@@ -72,6 +106,7 @@
 	[sPanel setCanCreateDirectories:TRUE];
 	[sPanel setAllowedFileTypes:fileTypes];
 	[sPanel setAllowsOtherFileTypes:FALSE];
+	[sPanel setMessage:@"Save MP4 As:"];
 	
 	[sPanel beginSheetForDirectory:NSHomeDirectory()
 							  file:nil
@@ -90,7 +125,10 @@
 	if (returnCode == NSOKButton)
 	{
 		[panel close];
-		[self scanSource:[[panel filenames] objectAtIndex:0]];
+		for (NSString * filename in [panel filenames])
+		{
+			[self scanSource:filename];
+		}
 	}
 }
 
@@ -99,8 +137,15 @@
 	if (returnCode == NSOKButton)
 	{
 		[panel close];
-		[muxer muxTargetToFile:[[panel filenames] objectAtIndex:0]];
+		[NSThread detachNewThreadSelector:@selector(muxTargetToFile:)
+								 toTarget:self
+							   withObject:[[panel filenames] objectAtIndex:0]];
 	}
+}
+
+-(void)muxTargetToFile:(NSString *)outputFile
+{
+	[muxer muxTargetToFile:outputFile];
 }
 
 #pragma mark -

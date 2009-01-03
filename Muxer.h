@@ -28,10 +28,12 @@
 -(id)init;
 -(NSInteger)scanSource:(NSString *)source;
 -(BOOL)muxTargetToFile:(NSString *)outputFile;
-
 -(NSInteger)sourceTrackCount;
+
 -(MXTrackWrapper *)trackWithIndex:(NSInteger)index;
 -(BOOL)isTrackGroupRow:(NSInteger)row;
+-(void)broadcastNotification:(NSString *)status progress:(double)progress isIndeterminate:(BOOL)indeterminate enableInterface:(BOOL)interface;
+
 -(void)removeTrackAtIndex:(NSInteger)index;
 -(uint64_t)calculateOutputSize;
 

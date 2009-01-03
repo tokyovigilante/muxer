@@ -114,11 +114,27 @@ typedef enum { TRACK_DISABLED = 0x0, TRACK_ENABLED = 0x1, TRACK_IN_MOVIE = 0x2, 
 	return [[audioTrackArray objectAtIndex:offset] isKindOfClass:[NSString class]];
 }
 
+-(void)broadcastNotification:(NSString *)status progress:(double)progress isIndeterminate:(BOOL)indeterminate enableInterface:(BOOL)interface
+{
+	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+	NSDictionary *notificationDictionary = [NSDictionary dictionaryWithObjectsAndKeys:status, @"status",
+											[NSNumber numberWithDouble:progress], @"progress",
+											[NSNumber numberWithBool:indeterminate], @"indeterminate",
+											[NSNumber numberWithBool:interface], @"interface", nil];
+											
+	[notificationCenter postNotificationName:@"status" object:self userInfo:notificationDictionary];
+}
+
 #pragma mark -
 #pragma mark Muxer control
 
 -(BOOL)muxTargetToFile:(NSString *)outputFile
 {
+	[self broadcastNotification:@"Muxing..."
+					   progress:0.0
+				isIndeterminate:TRUE 
+				enableInterface:FALSE];
+	
 	MP4TrackId videoTrack;
 	MXVideoTrackWrapper * videoTrackWrapper = [videoTrackArray objectAtIndex:1];
 	
@@ -507,9 +523,15 @@ typedef enum { TRACK_DISABLED = 0x0, TRACK_ENABLED = 0x1, TRACK_IN_MOVIE = 0x2, 
 	
 	MP4Close(targetMP4);
 
-	MP4Optimize([outputFile UTF8String], [[outputFile stringByAppendingPathComponent:@".optimized.mp4"] UTF8String], MP4_DETAILS_ERROR );
+	MP4Optimize([outputFile UTF8String], NULL, MP4_DETAILS_ERROR );
+	
+	[self broadcastNotification:[NSString stringWithFormat:@"Muxed MP4 to %@", [outputFile lastPathComponent]]
+					   progress:100.0
+				isIndeterminate:FALSE 
+				enableInterface:TRUE];
     
 	return 0;
+	
 }
 
 -(uint64_t)calculateOutputSize
@@ -522,54 +544,6 @@ typedef enum { TRACK_DISABLED = 0x0, TRACK_ENABLED = 0x1, TRACK_IN_MOVIE = 0x2, 
 			outputSize += ([[self trackWithIndex:i] bitrate] * [[self trackWithIndex:i] duration]) / 8096;
 	}
 	return outputSize;
-}
-
--(void)extractTrackFromFile:(MP4FileHandle)mp4File 
-				withTrackId:(MP4TrackId)trackId 
-		  toDestinationFile:(char*)dstFileName
-{
-	// TODO-KB: test io::StdioFile
-    char *outMode = "w";
-    char outName[1024];
-    char *Mp4FileName = "";
-	
-	if( !dstFileName )
-		snprintf( outName, sizeof( outName ), "%s.t%u", Mp4FileName, trackId );
-	else
-		snprintf( outName, sizeof( outName ), "%s", dstFileName );
-	
-	FILE *outputHandle = fopen(outName, outMode);
-	if (!outputHandle)
-	{
-		fprintf( stderr, "can't open %s (%s)\n", outName, strerror(errno));
-		return;
-	}
-	
-    MP4SampleId numSamples = MP4GetTrackNumberOfSamples( mp4File, trackId );
-	
-    for (MP4SampleId sampleId = 1; sampleId <= numSamples; sampleId++ ) 
-	{
-        // signals to ReadSample() that it should malloc a buffer for us
-        uint8_t* pSample = NULL;
-        uint32_t sampleSize = 0;
-		
-        if (!MP4ReadSample(mp4File, trackId, sampleId, &pSample, &sampleSize, NULL, NULL, NULL, NULL))
-		{
-            fprintf(stderr, "Read sample %u for %s failed\n", sampleId, outName);
-            break;
-        }
-		if (!fwrite(pSample, sampleSize, 1, outputHandle))
-		{
-            fprintf(stderr, "Write to %s failed (%s)\n", outName, strerror(errno));
-            break;
-        }
-		
-		free( pSample );
-	}
-	
-	
-	fclose(outputHandle);
-	
 }
 
 @end
