@@ -7,6 +7,7 @@
 //
 
 #import "MXVideoTrackWrapper.h"
+#import "h264_raw.h"
 
 @implementation MXVideoTrackWrapper
 
@@ -60,6 +61,5 @@
 	}
 	
 }
-
 
 @end

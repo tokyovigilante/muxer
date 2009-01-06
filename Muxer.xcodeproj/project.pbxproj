@@ -14,6 +14,8 @@
 		945491160EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */; };
 		945491170EFC6F3D00BECAEB /* libmp4v2.0.0.0.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */; };
 		945491460EFC725E00BECAEB /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 945491450EFC725E00BECAEB /* Controller.m */; };
+		948D7AE40F108FDC005D838B /* h264_raw.m in Sources */ = {isa = PBXBuildFile; fileRef = 948D7AE30F108FDC005D838B /* h264_raw.m */; };
+		948D7B2B0F12082D005D838B /* h264.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948D7B2A0F12082D005D838B /* h264.cpp */; };
 		9496767C0F038CFC00637F2E /* MXAudioTrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9496767B0F038CFC00637F2E /* MXAudioTrackWrapper.m */; };
 		949676810F038D0700637F2E /* MXVideoTrackWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 949676800F038D0700637F2E /* MXVideoTrackWrapper.m */; };
 		949676BA0F038D9900637F2E /* MXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 949676B90F038D9900637F2E /* MXWindow.m */; };
@@ -36,6 +38,12 @@
 		945491150EFC6F2500BECAEB /* libmp4v2.0.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmp4v2.0.0.0.dylib; path = mp4v2/libmp4v2.0.0.0.dylib; sourceTree = "<group>"; };
 		945491440EFC725E00BECAEB /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		945491450EFC725E00BECAEB /* Controller.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = Controller.m; sourceTree = "<group>"; };
+		948D7AE20F108FDC005D838B /* h264_raw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = h264_raw.h; sourceTree = "<group>"; };
+		948D7AE30F108FDC005D838B /* h264_raw.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = h264_raw.m; sourceTree = "<group>"; };
+		948D7B1E0F12073D005D838B /* mpeg4ip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpeg4ip.h; sourceTree = "<group>"; };
+		948D7B1F0F12073D005D838B /* mpeg4ip_bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpeg4ip_bitstream.h; sourceTree = "<group>"; };
+		948D7B250F1207EB005D838B /* mp4av_h264.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mp4av_h264.h; sourceTree = "<group>"; };
+		948D7B2A0F12082D005D838B /* h264.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = h264.cpp; sourceTree = "<group>"; };
 		949673AA0F0334CD00637F2E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		9496767A0F038CFC00637F2E /* MXAudioTrackWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXAudioTrackWrapper.h; sourceTree = "<group>"; };
 		9496767B0F038CFC00637F2E /* MXAudioTrackWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXAudioTrackWrapper.m; sourceTree = "<group>"; };
@@ -151,6 +159,17 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		948D7B220F12074F005D838B /* mpeg4-ip */ = {
+			isa = PBXGroup;
+			children = (
+				948D7B250F1207EB005D838B /* mp4av_h264.h */,
+				948D7B2A0F12082D005D838B /* h264.cpp */,
+				948D7B1E0F12073D005D838B /* mpeg4ip.h */,
+				948D7B1F0F12073D005D838B /* mpeg4ip_bitstream.h */,
+			);
+			name = "mpeg4-ip";
+			sourceTree = "<group>";
+		};
 		949676910F038D5200637F2E /* Custom Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +206,7 @@
 		94B85DD70F00DB260014486D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				948D7B220F12074F005D838B /* mpeg4-ip */,
 				94B85DDA0F00DB4E0014486D /* Classes */,
 			);
 			name = Controller;
@@ -197,6 +217,8 @@
 			children = (
 				94B85DDD0F00DB900014486D /* Muxer.h */,
 				94B85DDE0F00DB900014486D /* Muxer.m */,
+				948D7AE20F108FDC005D838B /* h264_raw.h */,
+				948D7AE30F108FDC005D838B /* h264_raw.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -265,6 +287,8 @@
 				9496767C0F038CFC00637F2E /* MXAudioTrackWrapper.m in Sources */,
 				949676810F038D0700637F2E /* MXVideoTrackWrapper.m in Sources */,
 				949676BA0F038D9900637F2E /* MXWindow.m in Sources */,
+				948D7AE40F108FDC005D838B /* h264_raw.m in Sources */,
+				948D7B2B0F12082D005D838B /* h264.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

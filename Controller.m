@@ -38,7 +38,7 @@
 {
 	NSOpenPanel * oPanel = [NSOpenPanel openPanel];
 	
-	NSArray *fileTypes = [NSArray arrayWithObjects:@"mp4", @"mov", Nil];
+	NSArray *fileTypes = [NSArray arrayWithObjects:@"mp4", @"mov", @"h264", Nil];
 	
 	[oPanel setCanChooseFiles:TRUE];
 	[oPanel setCanChooseDirectories:FALSE];
@@ -83,13 +83,13 @@
 	[StatusLabel setStringValue:[status objectForKey:@"status"]];
 	[MuxProgress setDoubleValue:[[status objectForKey:@"progress"] doubleValue]];
 	[MuxProgress setIndeterminate:[[status objectForKey:@"indeterminate"] boolValue]];
-	if ([[status objectForKey:@"indeterminate"] boolValue])
+	if ([[status objectForKey:@"interface"] boolValue])
 	{
-		[MuxProgress startAnimation];
+		[MuxProgress stopAnimation:self];
 	}
 	else
 	{
-		[MuxProgress stopAnimation];
+		[MuxProgress startAnimation:self];
 	}
 }
 

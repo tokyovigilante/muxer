@@ -12,6 +12,8 @@
 #import "MXVideoTrackWrapper.h"
 #import "MXAudioTrackWrapper.h"
 
+#import "h264_raw.h"
+
 typedef enum { TRACK_DISABLED = 0x0, TRACK_ENABLED = 0x1, TRACK_IN_MOVIE = 0x2, TRACK_IN_PREVIEW = 0x4, TRACK_IN_POSTER = 0x8}  track_header_flags;
 
 @implementation Muxer
@@ -34,40 +36,69 @@ typedef enum { TRACK_DISABLED = 0x0, TRACK_ENABLED = 0x1, TRACK_IN_MOVIE = 0x2, 
 
 -(NSInteger)scanSource:(NSString *)source
 {
-	MP4FileHandle *sourceHandle = MP4Read([source UTF8String], MP4_VERBOSITY);
-	if (sourceHandle == MP4_INVALID_FILE_HANDLE) return -1;
+	NSInteger numTracks = 0;
 	
-	NSInteger numTracks = MP4GetNumberOfTracks(sourceHandle, NULL, 0);
-	NSLog(@"Scanning %@, found %i tracks", [source lastPathComponent], numTracks);
-	for (NSInteger i=0; i < numTracks; i++)
+	if ([[source pathExtension] isEqualToString:@"h264"])
 	{
-		NSInteger selectedTrack = MP4FindTrackId(sourceHandle, i, NULL, 0);
+		// treat as raw H.264
+		numTracks = 1;
 		
-		const char *trackType = MP4GetTrackType(sourceHandle, selectedTrack);
-		
-		if (trackType)
+		MP4FileHandle *tempHandle = MP4Create([[[source stringByDeletingPathExtension] stringByAppendingPathExtension:@"mp4"] UTF8String], MP4_DETAILS_ERROR, MP4_CREATE_64BIT_DATA);
+		MP4SetTimeScale(tempHandle, 48000);
+		if (H264Creator(tempHandle, fopen([source UTF8String], "r"), 23.976216, 48000) == MP4_INVALID_TRACK_ID)
 		{
-			if (strcmp(trackType, MP4_VIDEO_TRACK_TYPE) == 0)
-			{
-				[videoTrackArray addObject:[[MXVideoTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack]];
-			}
-			else if (strcmp(trackType, MP4_AUDIO_TRACK_TYPE) == 0)
-			{
-				[audioTrackArray addObject:[[MXAudioTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack]];
-			}
-			else if (strcmp(trackType, MP4_TEXT_TRACK_TYPE) == 0	)
-			{
-				// placeholder
-			}
-			else
-			{
-				NSLog(@"Ignoring unsupported track (type %s)", trackType);
-				continue;
-				
-			}
+			NSLog(@"Unable to parse %@ as raw H.264 stream", [source lastPathComponent]);
+			MP4Close(tempHandle);
+			return 0;
 		}
-	}	
-	MP4Close(sourceHandle);
+
+		MP4Close(tempHandle);
+		MP4Optimize([source UTF8String], NULL, MP4_VERBOSITY);
+	}
+	
+	else if ([[source pathExtension] isEqualToString:@"ac3"])
+	{
+		// AC3 raw stream
+	}
+	
+	else // MP4 source
+	{
+		MP4FileHandle *sourceHandle = MP4Read([source UTF8String], MP4_VERBOSITY);
+		if (sourceHandle == MP4_INVALID_FILE_HANDLE) return -1;
+		
+		numTracks = MP4GetNumberOfTracks(sourceHandle, NULL, 0);
+		NSLog(@"Scanning %@, found %i tracks", [source lastPathComponent], numTracks);
+		for (NSInteger i=0; i < numTracks; i++)
+		{
+			NSInteger selectedTrack = MP4FindTrackId(sourceHandle, i, NULL, 0);
+			
+			const char *trackType = MP4GetTrackType(sourceHandle, selectedTrack);
+			
+			if (trackType)
+			{
+				if (strcmp(trackType, MP4_VIDEO_TRACK_TYPE) == 0)
+				{
+					[videoTrackArray addObject:[[MXVideoTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack]];
+				}
+				else if (strcmp(trackType, MP4_AUDIO_TRACK_TYPE) == 0)
+				{
+					[audioTrackArray addObject:[[MXAudioTrackWrapper alloc] initWithSourcePath:source trackID:selectedTrack]];
+				}
+				else if (strcmp(trackType, MP4_TEXT_TRACK_TYPE) == 0	)
+				{
+					// placeholder
+				}
+				else
+				{
+					NSLog(@"Ignoring unsupported track (type %s)", trackType);
+					continue;
+					
+				}
+			}
+		}	
+		MP4Close(sourceHandle);
+	}
+
 	return numTracks;
 }
 
@@ -180,12 +211,17 @@ typedef enum { TRACK_DISABLED = 0x0, TRACK_ENABLED = 0x1, TRACK_IN_MOVIE = 0x2, 
 		
 		uint8_t **sequenceParameterSet = [videoTrackWrapper sequenceParameterSet];
 		uint32_t *sequenceParameterSetSize = [videoTrackWrapper sequenceParameterSetSize];
+		uint8_t sps[4];
+		if (*sequenceParameterSetSize >= 4)
+		{
+			memcpy(&sps, *sequenceParameterSet, 4);
+		}
 		videoTrack = MP4AddH264VideoTrack(targetMP4, timescale,
 													 MP4_INVALID_DURATION, [videoTrackWrapper frameWidth], 
 													 [videoTrackWrapper	frameHeight],
-													 (uint8_t)*sequenceParameterSet+1, /* AVCProfileIndication */
-													 (uint8_t)*sequenceParameterSet+2, /* profile_compat */
-													 (uint8_t)*sequenceParameterSet+3, /* AVCLevelIndication */
+													 sps[1], /* AVCProfileIndication */
+													 sps[2], /* profile_compat */
+													 sps[3], /* AVCLevelIndication */
 													 3);      /* 4 bytes length before each NAL unit */
 		[videoTrackWrapper setTrackTargetID:videoTrack];
 		 		
